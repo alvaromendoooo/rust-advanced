@@ -1,0 +1,38 @@
+{
+  "course": "rust-advanced",
+  "language": "rust",
+  "language_id": 73,
+  "entrypoint": "main.rs",
+  "version": 1,
+  "content_hash": "3f2dbc257c0a5d28",
+  "lessons": [
+    {
+      "slug": "smart-pointers",
+      "tests_hash": "c6eb67fbbd76"
+    },
+    {
+      "slug": "interior-mutability",
+      "tests_hash": "ae7acc7c33fe"
+    },
+    {
+      "slug": "macros",
+      "tests_hash": "03720cba0306"
+    },
+    {
+      "slug": "unsafe",
+      "tests_hash": "713975a6a950"
+    },
+    {
+      "slug": "lifetimes",
+      "tests_hash": "4bac33491d82"
+    },
+    {
+      "slug": "trait-objects",
+      "tests_hash": "ece231f34b6b"
+    },
+    {
+      "slug": "async-await",
+      "tests_hash": "f4ac5cdefcde"
+    }
+  ]
+}
