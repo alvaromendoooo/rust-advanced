@@ -14,6 +14,22 @@ macro_rules! sum {
     };
 }
 
+trait Shape { fn area(&self) -> f64; }
+
+struct Square { side: f64 }
+struct Triangle { base: f64, height: f64 }
+
+impl Shape for Square {
+    fn area(&self) -> f64 {
+        self.side * self.side
+    }
+}
+
+impl Shape for Triangle {
+    fn area(&self) -> f64 {
+        self.base * self.height * 0.5
+    }
+}
 
 fn main() {
     // Test 01
@@ -52,12 +68,23 @@ fn main() {
     println!("{}", unsafe { *raw });*/
 
     // Test 05
-    let stdin = io::stdin();
+    /*let stdin = io::stdin();
     let mut lines = stdin.lock().lines();
     let a = lines.next().unwrap().unwrap();
     let b = lines.next().unwrap().unwrap();
 
-    println!("{}", logger(&a, &b));
+    println!("{}", logger(&a, &b));*/
+
+    // Test 06
+    let shapes: Vec<Box<dyn Shape>> = vec![
+        Box::new( Square { side: 3.0 } ),
+        Box::new( Triangle { base: 4.0, height: 5.0 } ),
+    ];
+
+    for item in shapes.iter() {
+        println!("{:.2}", item.area());
+    }
+
 }
 
 fn logger<'t>(a: &'t str, b: &'t str) -> &'t str {
