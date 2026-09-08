@@ -2,6 +2,19 @@ use std::io::{self, BufRead};
 use std::rc::{self, Rc};
 use std::cell::RefCell;
 
+macro_rules! sum {
+    () => {
+        0
+    };
+    ($x: expr) => {
+        $x
+    };
+    ($($x:expr),* $(,)?) => {
+        0 $(+ $x)*
+    };
+}
+
+
 fn main() {
     // Test 01
     /*let stdin = io::stdin();
@@ -17,12 +30,16 @@ fn main() {
     println!("sum: {}", nums.iter().sum::<i32>());*/
 
     // Test 02
-    let counter = Rc::new(RefCell::new(0));
+    /*let counter = Rc::new(RefCell::new(0));
 
     for _ in 0..3 {
         let handle = Rc::clone(&counter);
         *handle.borrow_mut() += 1;
     }
 
-    println!("{}", counter.borrow());
-}
+    println!("{}", counter.borrow());*/
+
+    // Test 03
+    println!("{}", sum!(1, 2, 3, 4, 5));
+
+    }
