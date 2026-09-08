@@ -40,6 +40,15 @@ fn main() {
     println!("{}", counter.borrow());*/
 
     // Test 03
-    println!("{}", sum!(1, 2, 3, 4, 5));
+    //println!("{}", sum!(1, 2, 3, 4, 5));
+    
+    // Test 04
+    let stdin = io::stdin();
+    let mut line = String::new();
+    stdin.lock().read_line(&mut line).unwrap();
+    let n: i32 = line.trim().parse().unwrap();
+    let raw: *const i32 = &n;
+
+    println!("{}", unsafe { *raw });
 
     }
