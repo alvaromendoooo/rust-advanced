@@ -1,6 +1,9 @@
 use std::io::{self, BufRead};
 use std::rc::{self, Rc};
 use std::cell::RefCell;
+use std::future::Future;
+use std::pin::Pin;
+use std::task::{Context, Poll};
 
 macro_rules! sum {
     () => {
@@ -30,6 +33,21 @@ impl Shape for Triangle {
         self.base * self.height * 0.5
     }
 }
+
+struct Double { n: i32 }
+
+impl Future for Double {
+    type Output = i32;
+
+    fn poll(self: Pin<&mut Self>, _cx: &mut Context) -> Poll<i32> {
+        Poll::Ready(self.n * 2)
+    }
+}
+
+fn double(n: i32) -> Double {
+    Double { n }
+}
+
 
 fn main() {
     // Test 01
@@ -76,14 +94,18 @@ fn main() {
     println!("{}", logger(&a, &b));*/
 
     // Test 06
-    let shapes: Vec<Box<dyn Shape>> = vec![
+    /*let shapes: Vec<Box<dyn Shape>> = vec![
         Box::new( Square { side: 3.0 } ),
         Box::new( Triangle { base: 4.0, height: 5.0 } ),
     ];
 
     for item in shapes.iter() {
         println!("{:.2}", item.area());
-    }
+    }*/
+
+    // Test 07
+    let _fut = double(7);
+    println!("created future");
 
 }
 
