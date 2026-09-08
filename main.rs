@@ -51,7 +51,7 @@ fn double(n: i32) -> Double {
 
 fn main() {
     // Test 01
-    /*let stdin = io::stdin();
+    let stdin = io::stdin();
     let mut line = String::new();
     stdin.lock().read_line(&mut line).unwrap();
     let nums: Vec<i32> = line.split_whitespace().map(|s| s.parse().unwrap()).collect();
@@ -61,47 +61,47 @@ fn main() {
     let _handle2 = Rc::clone(&rc_nums);
 
     println!("count: {}", Rc::strong_count(&rc_nums));
-    println!("sum: {}", nums.iter().sum::<i32>());*/
+    println!("sum: {}", nums.iter().sum::<i32>());
 
     // Test 02
-    /*let counter = Rc::new(RefCell::new(0));
+    let counter = Rc::new(RefCell::new(0));
 
     for _ in 0..3 {
         let handle = Rc::clone(&counter);
         *handle.borrow_mut() += 1;
     }
 
-    println!("{}", counter.borrow());*/
+    println!("{}", counter.borrow());
 
     // Test 03
-    //println!("{}", sum!(1, 2, 3, 4, 5));
+    println!("{}", sum!(1, 2, 3, 4, 5));
     
     // Test 04
-    /*let stdin = io::stdin();
+    let stdin = io::stdin();
     let mut line = String::new();
     stdin.lock().read_line(&mut line).unwrap();
     let n: i32 = line.trim().parse().unwrap();
     let raw: *const i32 = &n;
 
-    println!("{}", unsafe { *raw });*/
+    println!("{}", unsafe { *raw });
 
     // Test 05
-    /*let stdin = io::stdin();
+    let stdin = io::stdin();
     let mut lines = stdin.lock().lines();
     let a = lines.next().unwrap().unwrap();
     let b = lines.next().unwrap().unwrap();
 
-    println!("{}", logger(&a, &b));*/
+    println!("{}", logger(&a, &b));
 
     // Test 06
-    /*let shapes: Vec<Box<dyn Shape>> = vec![
+    let shapes: Vec<Box<dyn Shape>> = vec![
         Box::new( Square { side: 3.0 } ),
         Box::new( Triangle { base: 4.0, height: 5.0 } ),
     ];
 
     for item in shapes.iter() {
         println!("{:.2}", item.area());
-    }*/
+    }
 
     // Test 07
     let _fut = double(7);
