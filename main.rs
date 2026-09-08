@@ -43,12 +43,27 @@ fn main() {
     //println!("{}", sum!(1, 2, 3, 4, 5));
     
     // Test 04
-    let stdin = io::stdin();
+    /*let stdin = io::stdin();
     let mut line = String::new();
     stdin.lock().read_line(&mut line).unwrap();
     let n: i32 = line.trim().parse().unwrap();
     let raw: *const i32 = &n;
 
-    println!("{}", unsafe { *raw });
+    println!("{}", unsafe { *raw });*/
 
+    // Test 05
+    let stdin = io::stdin();
+    let mut lines = stdin.lock().lines();
+    let a = lines.next().unwrap().unwrap();
+    let b = lines.next().unwrap().unwrap();
+
+    println!("{}", logger(&a, &b));
+}
+
+fn logger<'t>(a: &'t str, b: &'t str) -> &'t str {
+    if a.chars().count() >= b.chars().count() {
+        return a
     }
+
+    return b
+}
