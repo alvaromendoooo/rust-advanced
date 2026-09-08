@@ -1,5 +1,5 @@
 use std::io::{self, BufRead};
-use std::rc::Rc;
+use std::rc::{self, Rc};
 
 fn main() {
     let stdin = io::stdin();
@@ -7,8 +7,10 @@ fn main() {
     stdin.lock().read_line(&mut line).unwrap();
     let nums: Vec<i32> = line.split_whitespace().map(|s| s.parse().unwrap()).collect();
 
-    // TODO: move `nums` into an Rc.
-    // TODO: create two more handles to it.
-    // TODO: print "count: " and the strong count.
-    // TODO: print "sum: " and the sum of the shared vec.
+    let rc_nums = Rc::new(nums.clone());
+    let _handle1 = Rc::clone(&rc_nums);
+    let _handle2 = Rc::clone(&rc_nums);
+
+    println!("count: {}", Rc::strong_count(&rc_nums));
+    println!("sum: {}", nums.iter().sum::<i32>());
 }
